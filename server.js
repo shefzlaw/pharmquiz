@@ -71,6 +71,7 @@ function generateSessionToken() {
 app.post('/api/register', async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log(`Register attempt for username: ${username}`);
     if (!username || !password) {
       return res.status(400).json({ error: 'Please provide username and password' });
     }
@@ -87,9 +88,10 @@ app.post('/api/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ username, password: hashedPassword });
     await user.save();
+    console.log(`User registered: ${username}`);
     res.status(201).json({ message: 'Registration successful' });
   } catch (error) {
-    console.error('Register error:', error);
+    console.error('Register error:', error.message, error.stack);
     res.status(500).json({ error: 'Registration failed' });
   }
 });
@@ -98,6 +100,7 @@ app.post('/api/register', async (req, res) => {
 app.post('/api/login', async (req, res) => {
   try {
     const { username, password } = req.body;
+    console.log(`Login attempt for username: ${username}`);
     if (!username || !password) {
       return res.status(400).json({ error: 'Please provide username and password' });
     }
@@ -109,9 +112,10 @@ app.post('/api/login', async (req, res) => {
     user.sessionToken = sessionToken;
     user.sessionTimestamp = new Date().getTime();
     await user.save();
+    console.log(`User logged in: ${username}`);
     res.json({ username, sessionToken, subscription: user.subscription });
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('Login error:', error.message, error.stack);
     res.status(500).json({ error: 'Login failed' });
   }
 });

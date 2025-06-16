@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pharmacy Technician National Prep Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Pharmacy Technician National Prep Quiz</h1>
+    <button id="logout-btn">Logout</button>
+  </header>
+
+  <div id="login-screen">
+    <div class="form-group">
+      <label for="login-username">Username:</label>
+      <input type="text" id="login-username" placeholder="Enter your username">
+    </div>
+    <div class="form-group">
+      <label for="login-password">Password:</label>
+      <input type="password" id="login-password" placeholder="Enter your password">
+    </div>
+    <button id="login-btn">Login</button>
+    <p><a href="#" id="show-register">Don't have an account? Register here</a></p>
+    <p id="login-error" class="warning"></p>
+  </div>
+
+  <div id="register-screen" style="display: none;">
+    <div class="form-group">
+      <label for="register-username">Username:</label>
+      <input type="text" id="register-username" placeholder="Enter your username">
+    </div>
+    <div class="form-group">
+      <label for="register-password">Password:</label>
+      <input type="password" id="register-password" placeholder="Enter your password">
+    </div>
+    <button id="register-btn">Register</button>
+    <p><a href="#" id="show-login">Already have an account? Login here</a></p>
+    <p id="register-error" class="warning"></p>
+  </div>
+
+  <div id="subscription-screen" style="display: none;">
+    <h2>Unlock Full Access</h2>
+    <p>Free users can access 15 questions per course. For full access (25, 50, or 100 questions), subscribe by following these steps:</p>
+    <ol class="code-instructions">
+      <li>Email <a href="mailto:pharmacyquiz@example.com" class="phone-link">pharmacyquiz@example.com</a> to receive payment details for your chosen plan (NGN 1000 for 3 months or NGN 2000 for 7 months).</li>
+      <li>Make the payment as instructed.</li>
+      <li>Call <a href="tel:07043846346" class="phone-link">07043846346</a> to confirm your payment and receive your access code.</li>
+    </ol>
+    <div class="form-group">
+      <label>Subscription Plan:</label>
+      <input type="radio" name="subscription-plan" value="3" id="plan-3m"> <label for="plan-3m">3 Months (NGN 1000)</label><br>
+      <input type="radio" name="subscription-plan" value="7" id="plan-7m"> <label for="plan-7m">7 Months (NGN 2000)</label>
+    </div>
+    <div class="form-group">
+      <label for="access-code">Access Code:</label>
+      <input type="text" id="access-code" placeholder="Enter your access code">
+    </div>
+    <button id="submit-code-btn">Submit Code</button>
+    <button id="free-user-btn">I’m a Free User</button>
+    <p id="subscription-error" class="warning">Warning: Do not share your access code with others, as it may lead to restricted access.</p>
+  </div>
+
+  <div id="start-screen" style="display: none;">
+    <div class="form-group">
+      <label for="user-name">Enter Your Name:</label>
+      <input type="text" id="user-name" placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+      <label for="course-select">Select Course:</label>
+      <select id="course-select">
+        <option value="">-- Select a Course --</option>
+        <option value="Use of English">Use of English</option>
+        <option value="Basic Dispensing Theory">Basic Dispensing Theory</option>
+        <option value="Action and Use of Medicines">Action and Use of Medicines</option>
+        <option value="Primary Health Care">Primary Health Care</option>
+        <option value="Anatomy and Physiology">Anatomy and Physiology</option>
+        <option value="Principles of Pharmacy Technician Practice">Principles of Pharmacy Technician Practice</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="question-count">Number of Questions:</label>
+      <select id="question-count"></select>
+    </div>
+    <button id="start-btn">Start Quiz</button>
+    <p id="start-error" class="warning"></p>
+    <div id="ad-container">
+      <!-- Placeholder for ad (remove or replace with actual ad code) -->
+    </div>
+  </div>
+
+  <div id="quiz-screen" style="display: none;">
+    <div class="timer" id="time-left">Time Left: 00:00</div>
+    <div id="question-number"></div>
+    <div id="question-text"></div>
+    <div id="options"></div>
+    <div class="navigation">
+      <button id="back-btn">Back</button>
+      <button id="next-btn">Next</button>
+      <button id="cancel-btn">Cancel</button>
+    </div>
+  </div>
+
+  <div id="result-screen" style="display: none;">
+    <h2>Quiz Results</h2>
+    <p>Score: <span id="score"></span></p>
+    <p>Percentage: <span id="percentage"></span></p>
+    <button id="restart-btn">Restart Quiz</button>
+    <button id="home-btn">Home</button>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
